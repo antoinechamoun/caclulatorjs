@@ -12,19 +12,15 @@ const subtract = function(a,b) {
     return a-b;
 };
 
-const multiply = function(arr) {
-    let mlt = arr.reduce((total, num) => {
-        return total*num
-    },1)
-    return mlt
+const multiply = function(a,b) {
+    return a*b
 };
 
-const power = function(a, b) {
-    let num = a;
-    for(let i=1; i<b; i++){
-    a *= num
-}
-return a
+const divide = function(a, b) {
+    if(b === 0){
+        return alert('you cant divide by 0')
+    }
+    return a / b;
 };
 
 const handleOperator = function(e){
@@ -37,20 +33,35 @@ const handleOperator = function(e){
             arr.splice(arr.length-1, 1)
             value1=output.textContent=arr.join("")
         }
+    }else if(e.srcElement.textContent === '='){
+        value2=parseFloat(value2)
+        value1=parseFloat(value1)
+        if(value1!=='' && op !== undefined && value2!==''){
+            if(op==='+'){
+                result = add(value1,value2)
+            }else if(op==='/'){
+                result = divide(value1,value2)
+            }else if(op==='*'){
+                result = multiply(value1,value2)
+            }else if(op==='-'){
+                result = subtract(value1,value2)
+            }
+            result=result.toFixed(2)
+            output.textContent=result
+        }
     }else if(e.srcElement.id === 'digital'){
         if(value1 === ''|| op === undefined){
             value1+=e.srcElement.textContent
             output.textContent=value1
-            value1=parseInt(value1)
         } else {
             value2+=e.srcElement.textContent
             output.textContent=value2
-            value2=parseInt(value2)
         }
     }else if(e.srcElement.id==='operator'){
-        if(value1!==''){
+        if(value1!=='' && value2 === ''){
             op=e.srcElement.textContent
-            console.log(op);
+        } else{
+
         }
     }
 }

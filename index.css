@@ -14,6 +14,12 @@
     width: 300px;
     height: 70px;
     background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    font-size: xx-large;
+    border: 1px solid gray;
 }
 
 .smallBtns{
