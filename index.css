@@ -7,7 +7,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    width: 100vw;
+    height: 100vh;
 }
 
 .output{
@@ -30,6 +31,7 @@
 .btn{
     width: 75px;
     height: 75px;
+    cursor: pointer;
 }
 .big-btn{
     width: 148px;

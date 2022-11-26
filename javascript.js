@@ -23,6 +23,31 @@ const divide = function(a, b) {
     return a / b;
 };
 
+const equal = function(){
+    value2=parseFloat(value2)
+    value1=parseFloat(value1)
+    if(op==='+'){
+        result = add(value1,value2)
+    }else if(op==='/'){
+        result = divide(value1,value2)
+    }else if(op==='*'){
+        result = multiply(value1,value2)
+    }else if(op==='-'){
+        result = subtract(value1,value2)
+    }
+
+    if(value2 !== ''){
+        value1=result.toFixed(2)
+        value2=''
+        output.textContent=result
+    }else{
+        result=result.toFixed(2)
+        output.textContent=result
+        value1=value2=''
+        op=undefined  
+    }
+}
+
 const handleOperator = function(e){
     if(e.srcElement.textContent === 'CLEAR'){
         output.textContent='';
@@ -34,20 +59,10 @@ const handleOperator = function(e){
             value1=output.textContent=arr.join("")
         }
     }else if(e.srcElement.textContent === '='){
-        value2=parseFloat(value2)
-        value1=parseFloat(value1)
-        if(value1!=='' && op !== undefined && value2!==''){
-            if(op==='+'){
-                result = add(value1,value2)
-            }else if(op==='/'){
-                result = divide(value1,value2)
-            }else if(op==='*'){
-                result = multiply(value1,value2)
-            }else if(op==='-'){
-                result = subtract(value1,value2)
-            }
-            result=result.toFixed(2)
-            output.textContent=result
+        if(value1==='' || op === undefined || value2===''){
+            return           
+        }else if(value1!=='' && op !== undefined && value2!==''){
+            equal()
         }
     }else if(e.srcElement.id === 'digital'){
         if(value1 === ''|| op === undefined){
@@ -61,7 +76,10 @@ const handleOperator = function(e){
         if(value1!=='' && value2 === ''){
             op=e.srcElement.textContent
         } else{
-
+            if(value1!=='' && value2!==''){
+                equal()
+                op=e.srcElement.textContent
+            }
         }
     }
 }
