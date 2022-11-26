@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.output{
+    width: 300px;
+    height: 70px;
+    background-color: antiquewhite;
+}
+
+.smallBtns{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.btn{
+    width: 75px;
+    height: 75px;
+}
+.big-btn{
+    width: 148px;
+    height: 70px;
+    margin-top: 2px;
+}
